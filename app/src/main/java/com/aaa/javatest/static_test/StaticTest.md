@@ -8,12 +8,14 @@
 >1. Java 静态方法、静态属性属于静态绑定，声明为父类就访问父类的父类的静态方法、静态属性，声明为子类，就访问子类，如果子类不存在该静态方法、静态属性，就访问相应父类的。
 >2. 多态这个概念是针对动态绑定的，正是由于动态绑定的存在，才能形成多态！静态属性和静态方法可以被继承可以被重写，只是非动态绑定而没表现出多态性。
 >3. 根据《java编程思想》中的描述这是因为静态方法和静态属性没有采用动态绑定。具体表现就是，将子类实例向上转型则会调用到基类中的静态方法和属性，不转型就调用子类自身的静态方法和属性。编译器不推荐通过实例去调用静态方法和属性，因为这种调用方式容易造成混淆。
+>4. 实例去调用静态方法，容易混淆，请注意下图流程
+
+![实例调用静态方法.PNG](https://upload-images.jianshu.io/upload_images/9601136-a3ae7a450eb7183d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)
 
 - 代码
 ```java
 
 public class One {
-    //静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？
     public static String one_1 = "one";
 
     public static void oneFn() {
@@ -36,7 +38,6 @@ public class Two2 extends One {
 
 public class StaticTest {
 
-    //静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？
     public static void main(String[] args) {
         new StaticTest().TwoTest();
         new StaticTest().Two_Test();
