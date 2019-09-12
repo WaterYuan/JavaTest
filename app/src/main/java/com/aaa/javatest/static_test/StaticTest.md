@@ -92,21 +92,21 @@ public class StaticTest {
 
 /*
 向上转型 调用 继承 的静态*********
-oneFn
+oneFn // 因为向上转型，故直接调用父类的
 One.one_1>>>>>>>one
 one.one_1>>>>>>>one
 不转型直接调用 继承 的静态*********
-oneFn
+oneFn // 虽然未向上转型，但子类只是继承未重写，故还是调用父类的
 One.one_1>>>>>>>one
 one.one_1>>>>>>>one
 向上转型 调用 重写 的静态*********
-oneFn
+oneFn // 虽然已重写，但因为向上转型，故直接调用父类的
 One.one_1>>>>>>>one
 one.one_1>>>>>>>one
 不转型直接调用 重写 的静态*********
-TwoFn
-One.one_1>>>>>>>one
-one.one_1>>>>>>>two
+TwoFn // 已重写，且未向上转型，故直接调用自己的
+One.one_1>>>>>>>one // 父类类对象直接调用父类的
+one.one_1>>>>>>>two // 已重写，且未向上转型，调用自己的
 */
 }
 
