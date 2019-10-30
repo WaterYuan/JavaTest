@@ -65,7 +65,9 @@ class MyDelayedTask implements Delayed {
     }
 
     /**
-     * 需要实现的接口，获得延迟时间   用过期时间-当前时间
+     * 需要实现的接口，获得延迟时间
+     * <p>
+     * 剩余延迟时间 = 总延迟时间 - 当前时间
      *
      * @param unit
      * @return
@@ -76,7 +78,9 @@ class MyDelayedTask implements Delayed {
     }
 
     /**
-     * 用于延迟队列内部比较排序   当前时间的延迟时间 - 比较对象的延迟时间
+     * 用于延迟队列内部比较排序
+     * <p>
+     * 当前对象的延迟时间 - 另一个对象的延迟时间
      *
      * @param o
      * @return

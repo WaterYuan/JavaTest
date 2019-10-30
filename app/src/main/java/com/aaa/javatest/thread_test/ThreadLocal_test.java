@@ -16,11 +16,17 @@ public class ThreadLocal_test {
             System.out.println("Thread ID:" + Thread.currentThread().getId() + ",integerThreadLocal = " + integerThreadLocal.get());
         }).start();
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         System.out.println("Thread ID:" + Thread.currentThread().getId() + ",integerThreadLocal = " + integerThreadLocal.get());
     }
     /*
 Thread ID:11,integerThreadLocal = 2
-Thread ID:1,integerThreadLocal = 1
 Thread ID:12,integerThreadLocal = null
+Thread ID:1,integerThreadLocal = 1
     * */
 }

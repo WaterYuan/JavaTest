@@ -52,13 +52,19 @@ public class FragmentB extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.i(TAG, "onStart: ");
+        Log.i(TAG, "onStart: isVisible=" + isVisible());
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        Log.i(TAG, "onHiddenChanged: hidden=" + hidden + " isVisible=" + isVisible());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i(TAG, "onResume: ");
+        Log.i(TAG, "onResume: isVisible=" + isVisible());
     }
 
     @Override
