@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.aaa.javatest.fragment_test.FirstActivity;
+import com.aaa.javatest.lru.LruFragment;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -16,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fl_content, LruFragment.getInstance(), "LruFragment")
+                .commit();
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
-        Log.i(TAG, "onNewIntent: ");
-        super.onNewIntent(intent);
-        setIntent(intent);
-        getIntent();
-        getSupportFragmentManager().beginTransaction().commit();
+    public void onWindowFocusChanged(boolean hasFocus) {
+        Log.i(TAG, "onWindowFocusChanged: " + hasFocus);
     }
 }

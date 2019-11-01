@@ -10,6 +10,12 @@ ThreadLocalTest
 延迟队列
 >自定义的延迟队列的元素，必须实现getDelay()和compareTo()方法
 
+offer
+
+take
+
+compareTo
+
 
 ##### EventBusTest
 
