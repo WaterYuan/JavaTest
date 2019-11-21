@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.aaa.javatest.fragment_test.FirstActivity;
 import com.aaa.javatest.lru.LruFragment;
+import com.aaa.javatest.map.MapTest;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fl_content, LruFragment.getInstance(), "LruFragment")
                 .commit();
+
     }
 
     @Override

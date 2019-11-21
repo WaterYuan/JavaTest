@@ -30,13 +30,18 @@ public class LruFragment extends Fragment {
         initLinkedHashMap();
     }
 
+    /**
+     * 测试LinkedHashMap的accessOrder
+     */
     private void initLinkedHashMap() {
         LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>(0, 0.75f, true);
 
+        // 初始化数据
         for (int i = 0; i < 5; i++) {
             linkedHashMap.put("k" + i, "v" + i);
         }
 
+        // 修改
         linkedHashMap.put("k3", "v3");
 
         {
@@ -60,6 +65,7 @@ public class LruFragment extends Fragment {
 2019-11-01 14:24:56.068 17245-17245/com.aaa.javatest I/LruFragment: initLinkedHashMap: k0 //
          * */
         Log.i(TAG, "initLinkedHashMap: ---");
+        // 修改
         linkedHashMap.get("k0");
 
         {
@@ -73,9 +79,16 @@ public class LruFragment extends Fragment {
     }
 
     private void initLru() {
-        long maxMemory = Runtime.getRuntime().maxMemory();
-        LruCache<String, String> mLruCache = new LruCache((int) (maxMemory / 8));
+        long maxMemory = Runtime.getRuntime().maxMemory(); // TODO: 2019/11/21
+        LruCache<String, String> mLruCache = new LruCache((int) (maxMemory / 8)) {
+            @Override
+            protected int sizeOf(Object key, Object value) {
+                // TODO: 2019/11/21
+                return super.sizeOf(key, value);
+            }
+        };
 
+        // 初始化数据
         for (int i = 0; i < 5; i++) {
             mLruCache.put("k" + i, "v" + i);
         }
@@ -88,6 +101,7 @@ public class LruFragment extends Fragment {
                 Log.i(TAG, "initLru: " + entry.getKey());
             }
         }
+        // 修改
         mLruCache.get("k2");
         Log.i(TAG, "initLru: ---");
         {
